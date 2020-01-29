@@ -1,7 +1,7 @@
-name: IronDoors
+name: ${project.name}
+description: ${project.description}
+version: ${project.version}
 main: com.rngservers.irondoors.Main
-description: Open iron doors with hand
-version: 1.0
 api-version: 1.13
 author: RandomUnknown
 

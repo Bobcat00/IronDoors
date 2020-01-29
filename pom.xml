@@ -6,9 +6,16 @@
 
     <groupId>com.rngservers</groupId>
     <artifactId>IronDoors</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
+    <version>1.2</version>
     <name>IronDoors</name>
+    <description>Open iron doors with hand.</description>
+
+    <developers>
+        <developer>
+            <name>RandomUnknown</name>
+            <url>https://gitlab.com/RandomUnknown</url>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>1.8</java.version>

@@ -1,5 +1,6 @@
 package com.rngservers.irondoors.events;
 
+import com.rngservers.irondoors.animation.Animation;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -10,11 +11,10 @@ import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import com.rngservers.irondoors.util.Util114;
-import com.rngservers.irondoors.util.Util115;
 import com.rngservers.irondoors.Main;
 
 public class Events implements Listener {
@@ -24,21 +24,20 @@ public class Events implements Listener {
 		this.plugin = plugin;
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onIronDoor(PlayerInteractEvent event) {
-		if (event.useInteractedBlock() == null) {
+		if (event.isCancelled() ||
+				!event.getPlayer().hasPermission("irondoors.use") ||
+				event.getClickedBlock() == null ||
+				event.getHand() == null ||
+				!event.getHand().equals(EquipmentSlot.HAND) ||
+				!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			return;
 		}
-		if (!event.getPlayer().hasPermission("irondoors.use")) {
-			return;
-		}
-		if (event.getClickedBlock() == null) {
-			return;
-		}
-		if (!event.getHand().equals(EquipmentSlot.HAND)) {
-			return;
-		}
-		if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+		BlockPlaceEvent placeEvent = new BlockPlaceEvent(event.getClickedBlock(), event.getClickedBlock().getState(), event.getClickedBlock(), event.getItem(), event.getPlayer(), true, EquipmentSlot.HAND);
+		plugin.getServer().getPluginManager().callEvent(placeEvent);
+		if (!placeEvent.canBuild()) {
 			return;
 		}
 		if (event.getClickedBlock().getType().equals(Material.IRON_DOOR)
@@ -63,11 +62,7 @@ public class Events implements Listener {
 					door.setOpen(true);
 				}
 				block1.setBlockData(door);
-				if (plugin.getServer().getVersion().contains("1.14")) {
-					new Util114().handAnimation(event.getPlayer());
-				} else if (plugin.getServer().getVersion().contains("1.15")) {
-					new Util115().handAnimation(event.getPlayer());
-				}
+				new Animation(plugin).handAnimation(event.getPlayer());
 			}
 		}
 	}
