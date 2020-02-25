@@ -1,7 +1,7 @@
 name: ${project.name}
 description: ${project.description}
 version: ${project.version}
-main: com.rngservers.irondoors.Main
+main: com.rngservers.irondoors.IronDoors
 api-version: 1.13
 author: RandomUnknown
 

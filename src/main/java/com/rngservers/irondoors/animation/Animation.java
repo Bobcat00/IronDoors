@@ -1,12 +1,12 @@
 package com.rngservers.irondoors.animation;
 
-import com.rngservers.irondoors.Main;
+import com.rngservers.irondoors.IronDoors;
 import org.bukkit.entity.Player;
 
 public class Animation {
-    private Main plugin;
+    private IronDoors plugin;
 
-    public Animation(Main plugin) {
+    public Animation(IronDoors plugin) {
         this.plugin = plugin;
     }
 
