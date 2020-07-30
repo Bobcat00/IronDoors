@@ -26,10 +26,16 @@ public class Events implements Listener {
 				!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			return;
 		}
-		if (event.getClickedBlock().getType().equals(Material.IRON_DOOR)
-				|| event.getClickedBlock().getType().equals(Material.IRON_TRAPDOOR)) {
+
+		if ((event.getClickedBlock().getType().equals(Material.IRON_DOOR)
+				|| event.getClickedBlock().getType().equals(Material.IRON_TRAPDOOR))
+				&& !event.getPlayer().isSneaking()) {
 			if (doorManager.canBuild(event.getPlayer(), event.getClickedBlock().getLocation(), event.getItem())) {
 				doorManager.toggleDoor(event.getPlayer(), event.getClickedBlock().getLocation());
+
+				if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.isBlockInHand()) {
+					event.setCancelled(true);
+				}
 			}
 		}
 	}
