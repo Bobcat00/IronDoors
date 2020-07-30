@@ -1,10 +1,10 @@
-package com.rngservers.irondoors.animation;
+package com.ranull.irondoors.animation;
 
-import net.minecraft.server.v1_15_R1.*;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import net.minecraft.server.v1_13_R2.*;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-public class Animation115 {
+public class Animation113 {
 	public void handAnimation(Player player) {
 		EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
 		PlayerConnection connection = entityPlayer.playerConnection;

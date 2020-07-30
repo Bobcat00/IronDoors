@@ -1,9 +1,8 @@
-package com.rngservers.irondoors;
+package com.ranull.irondoors;
 
-import com.rngservers.irondoors.door.DoorManager;
+import com.ranull.irondoors.events.Events;
+import com.ranull.irondoors.door.DoorManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import com.rngservers.irondoors.events.Events;
 
 public class IronDoors extends JavaPlugin {
 	@Override

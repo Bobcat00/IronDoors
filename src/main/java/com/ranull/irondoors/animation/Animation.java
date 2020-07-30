@@ -1,6 +1,6 @@
-package com.rngservers.irondoors.animation;
+package com.ranull.irondoors.animation;
 
-import com.rngservers.irondoors.IronDoors;
+import com.ranull.irondoors.IronDoors;
 import org.bukkit.entity.Player;
 
 public class Animation {
@@ -17,6 +17,8 @@ public class Animation {
             new Animation114().handAnimation(player);
         } else if (plugin.getServer().getVersion().contains("1.15")) {
             new Animation115().handAnimation(player);
+        } else if (plugin.getServer().getVersion().contains("1.16")) {
+            new Animation116().handAnimation(player);
         }
     }
 }

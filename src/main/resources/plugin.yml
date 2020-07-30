@@ -1,9 +1,9 @@
 name: ${project.name}
 description: ${project.description}
 version: ${project.version}
-main: com.rngservers.irondoors.IronDoors
+main: com.ranull.irondoors.IronDoors
 api-version: 1.13
-author: RandomUnknown
+author: Ranull
 
 permissions:
   irondoors.use:

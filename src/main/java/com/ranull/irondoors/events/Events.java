@@ -1,6 +1,6 @@
-package com.rngservers.irondoors.events;
+package com.ranull.irondoors.events;
 
-import com.rngservers.irondoors.door.DoorManager;
+import com.ranull.irondoors.door.DoorManager;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
