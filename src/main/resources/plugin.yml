@@ -2,10 +2,9 @@ name: ${project.name}
 description: ${project.description}
 version: ${project.version}
 main: com.ranull.irondoors.IronDoors
-api-version: 1.13
 author: Ranull
 
 permissions:
   irondoors.use:
     default: true
-    description: Open iron doors with hand
+    description: Open iron doors and trap doors with hand
