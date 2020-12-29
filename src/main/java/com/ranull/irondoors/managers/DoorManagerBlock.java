@@ -17,11 +17,10 @@ import org.bukkit.inventory.ItemStack;
 public class DoorManagerBlock implements DoorManager {
     @Override
     public boolean canBuild(IronDoors plugin, Player player, Location location, ItemStack itemStack) {
-        if (itemStack == null) {
-            itemStack = new ItemStack(Material.AIR);
-        }
+        itemStack = itemStack == null ? new ItemStack(Material.AIR) : itemStack;
 
-        BlockPlaceEvent blockPlaceEvent = new BlockPlaceEvent(location.getBlock(), location.getBlock().getState(), location.getBlock(), itemStack, player, true, EquipmentSlot.HAND);
+        BlockPlaceEvent blockPlaceEvent = new BlockPlaceEvent(location.getBlock(),
+                location.getBlock().getState(), location.getBlock(), itemStack, player, true, EquipmentSlot.HAND);
 
         plugin.getServer().getPluginManager().callEvent(blockPlaceEvent);
 
@@ -37,7 +36,7 @@ public class DoorManagerBlock implements DoorManager {
 
             openable.setOpen(!openable.isOpen());
             block.setBlockData(openable);
-
+            
             if (blockData instanceof Door) {
                 block.getWorld().playEffect(block.getLocation(), Effect.IRON_DOOR_TOGGLE, 0);
             } else if (blockData instanceof TrapDoor) {

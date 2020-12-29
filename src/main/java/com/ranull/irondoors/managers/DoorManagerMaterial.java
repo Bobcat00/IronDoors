@@ -15,11 +15,10 @@ import org.bukkit.material.Openable;
 import org.bukkit.material.TrapDoor;
 
 public class DoorManagerMaterial implements DoorManager {
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canBuild(IronDoors plugin, Player player, Location location, ItemStack itemStack) {
-        if (itemStack == null) {
-            itemStack = new ItemStack(Material.AIR);
-        }
+        itemStack = itemStack == null ? new ItemStack(Material.AIR) : itemStack;
 
         BlockPlaceEvent blockPlaceEvent = new BlockPlaceEvent(location.getBlock(), location.getBlock().getState(), location.getBlock(), itemStack, player, true);
 
@@ -28,6 +27,7 @@ public class DoorManagerMaterial implements DoorManager {
         return blockPlaceEvent.canBuild();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void toggleDoor(IronDoors plugin, Block block) {
         if (block.getState().getData() instanceof Door && ((Door) block.getState().getData()).isTopHalf()) {
