@@ -5,6 +5,9 @@ main: com.ranull.irondoors.IronDoors
 author: Ranull
 
 permissions:
-  irondoors.use:
+  irondoors.irondoor:
     default: true
-    description: Open iron doors and trap doors with hand
+    description: Open iron doors with your hand
+  irondoors.irontrapdoor:
+    default: true
+    description: Open iron trap doors with your hand

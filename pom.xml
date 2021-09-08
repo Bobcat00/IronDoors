@@ -6,9 +6,9 @@
 
     <groupId>com.ranull</groupId>
     <artifactId>IronDoors</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
     <name>IronDoors</name>
-    <description>Open iron doors with hand.</description>
+    <description>Open iron doors and iron trap doors with your hand.</description>
 
     <developers>
         <developer>
@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <version>1.17-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
