@@ -1,4 +1,4 @@
-package com.ranull.irondoors.managers;
+package com.ranull.irondoors.compatibility;
 
 import com.ranull.irondoors.IronDoors;
 import org.bukkit.Effect;
@@ -15,7 +15,7 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.material.Openable;
 import org.bukkit.material.TrapDoor;
 
-public class DoorManagerMaterial implements DoorManager {
+public class CompatibilityMaterialData implements Compatibility {
     @SuppressWarnings("deprecation")
     @Override
     public boolean canInteract(IronDoors plugin, Player player, ItemStack itemStack, Block block, BlockFace blockFace) {

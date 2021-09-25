@@ -1,8 +1,6 @@
-package com.ranull.irondoors.listeners;
+package com.ranull.irondoors.listener;
 
 import com.ranull.irondoors.IronDoors;
-import com.ranull.irondoors.managers.DoorManager;
-import com.ranull.irondoors.nms.NMS;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,15 +12,12 @@ import org.bukkit.inventory.EquipmentSlot;
 
 public class PlayerInteractListener implements Listener {
     private final IronDoors plugin;
-    private final DoorManager doorManager;
-    private final NMS nms;
 
-    public PlayerInteractListener(IronDoors plugin, DoorManager doorManager, NMS nms) {
+    public PlayerInteractListener(IronDoors plugin) {
         this.plugin = plugin;
-        this.doorManager = doorManager;
-        this.nms = nms;
     }
 
+    @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -36,13 +31,10 @@ public class PlayerInteractListener implements Listener {
                 || (block.getType().toString().equals("IRON_TRAPDOOR")
                 && player.hasPermission("irondoors.irontrapdoor")))) {
             if ((!plugin.hasSecondHand() || event.getHand() == EquipmentSlot.HAND)
-                    && doorManager.canInteract(plugin, player,
-                    event.getPlayer().getItemInHand(), block, event.getBlockFace())) {
-                doorManager.toggleDoor(plugin, block);
-
-                if (nms != null) {
-                    nms.mainHandAnimation(player);
-                }
+                    && (plugin.is_v1_7() || plugin.getCompatibility().canInteract(plugin, player,
+                    event.getPlayer().getItemInHand(), block, event.getBlockFace()))) {
+                plugin.getCompatibility().toggleDoor(plugin, block);
+                plugin.swingMainHand(player);
 
                 if (event.isBlockInHand()) {
                     event.setCancelled(true);

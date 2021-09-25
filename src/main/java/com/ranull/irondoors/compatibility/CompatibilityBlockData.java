@@ -1,4 +1,4 @@
-package com.ranull.irondoors.managers;
+package com.ranull.irondoors.compatibility;
 
 import com.ranull.irondoors.IronDoors;
 import org.bukkit.Effect;
@@ -15,7 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class DoorManagerBlock implements DoorManager {
+public class CompatibilityBlockData implements Compatibility {
     @Override
     public boolean canInteract(IronDoors plugin, Player player, ItemStack itemStack, Block block, BlockFace blockFace) {
         itemStack = itemStack == null ? new ItemStack(Material.AIR) : itemStack;
