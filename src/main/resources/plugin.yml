@@ -3,6 +3,7 @@ description: ${project.description}
 version: ${project.version}
 main: com.ranull.irondoors.IronDoors
 author: Ranull
+api-version: 1.13
 
 permissions:
   irondoors.irondoor:

@@ -23,10 +23,10 @@ public class CompatibilityBlockData implements Compatibility {
         Material material = block.getType();
         BlockData blockData = block.getBlockData().clone();
 
-        if (block.getType().toString().equals("IRON_DOOR_BLOCK")) {
-            newMaterial = Material.getMaterial("WOODEN_DOOR");
+        if (block.getType().toString().equals("IRON_DOOR")) {
+            newMaterial = Material.getMaterial("OAK_DOOR");
         } else if (block.getType().toString().equals("IRON_TRAPDOOR")) {
-            newMaterial = Material.getMaterial("TRAP_DOOR");
+            newMaterial = Material.getMaterial("OAK_TRAPDOOR");
         }
 
         if (newMaterial != null) {

@@ -26,7 +26,7 @@ public class PlayerInteractListener implements Listener {
         if (block != null
                 && !player.isSneaking()
                 && event.getAction() == Action.RIGHT_CLICK_BLOCK
-                && ((block.getType().toString().equals("IRON_DOOR_BLOCK")
+                && ((block.getType().toString().equals("IRON_DOOR")
                 && player.hasPermission("irondoors.irondoor"))
                 || (block.getType().toString().equals("IRON_TRAPDOOR")
                 && player.hasPermission("irondoors.irontrapdoor")))) {
