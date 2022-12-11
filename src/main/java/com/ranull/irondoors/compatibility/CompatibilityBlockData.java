@@ -1,8 +1,13 @@
 package com.ranull.irondoors.compatibility;
 
 import com.ranull.irondoors.IronDoors;
+
+import java.util.Random;
+
 import org.bukkit.Effect;
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
@@ -16,6 +21,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class CompatibilityBlockData implements Compatibility {
+
+    Random random = new Random();
+
     @Override
     public boolean canInteract(IronDoors plugin, Player player, ItemStack itemStack, Block block, BlockFace blockFace) {
         itemStack = itemStack == null ? new ItemStack(Material.AIR) : itemStack;
@@ -50,13 +58,18 @@ public class CompatibilityBlockData implements Compatibility {
         if (blockData instanceof Openable) {
             Openable openable = (Openable) blockData;
 
-            openable.setOpen(!openable.isOpen());
+            boolean isOpen = openable.isOpen();
+            openable.setOpen(!isOpen);
             block.setBlockData(openable);
 
+            Sound sound = null;
             if (blockData instanceof Door) {
-                block.getWorld().playEffect(block.getLocation(), Effect.IRON_DOOR_TOGGLE, 0);
+                sound = isOpen ? Sound.BLOCK_IRON_DOOR_CLOSE : Sound.BLOCK_IRON_DOOR_OPEN;
             } else if (blockData instanceof TrapDoor) {
-                block.getWorld().playEffect(block.getLocation(), Effect.IRON_TRAPDOOR_TOGGLE, 0);
+                sound = isOpen ? Sound.BLOCK_IRON_TRAPDOOR_CLOSE : Sound.BLOCK_IRON_TRAPDOOR_OPEN;
+            }
+            if (sound != null) {
+                block.getWorld().playSound(block.getLocation(), sound, SoundCategory.BLOCKS, 1.0F, random.nextFloat() * 0.1F + 0.9F);
             }
         }
     }
