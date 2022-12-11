@@ -73,3 +73,8 @@ fabric.properties
 # Marven
 log/
 target/
+
+# Eclipse
+.classpath
+.project
+.settings/
