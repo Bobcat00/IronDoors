@@ -23,18 +23,17 @@ public class PlayerInteractListener implements Listener {
         Player player = event.getPlayer();
         Block block = event.getClickedBlock();
 
-        if (block != null
-                && !player.isSneaking()
-                && event.getAction() == Action.RIGHT_CLICK_BLOCK
-                && ((block.getType().toString().equals("IRON_DOOR")
-                && player.hasPermission("irondoors.irondoor"))
-                || (block.getType().toString().equals("IRON_TRAPDOOR")
-                && player.hasPermission("irondoors.irontrapdoor")))) {
-            if ((!plugin.hasSecondHand() || event.getHand() == EquipmentSlot.HAND)
-                    && (plugin.is_v1_7() || plugin.getCompatibility().canInteract(plugin, player,
-                    event.getPlayer().getItemInHand(), block, event.getBlockFace()))) {
+        if ((block != null) &&
+            (!player.isSneaking()) &&
+            (event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
+            ((block.getType().toString().equals("IRON_DOOR") && player.hasPermission("irondoors.irondoor")) ||
+             (block.getType().toString().equals("IRON_TRAPDOOR") && player.hasPermission("irondoors.irontrapdoor"))))
+        {
+            if ((event.getHand() == EquipmentSlot.HAND) &&
+                plugin.getCompatibility().canInteract(plugin, player, event.getPlayer().getItemInHand(), block, event.getBlockFace()))
+            {
                 plugin.getCompatibility().toggleDoor(plugin, block);
-                plugin.swingMainHand(player);
+                player.swingMainHand();
 
                 if (event.isBlockInHand()) {
                     event.setCancelled(true);
