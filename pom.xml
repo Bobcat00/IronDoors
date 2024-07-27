@@ -6,7 +6,7 @@
 
     <groupId>com.ranull</groupId>
     <artifactId>IronDoors</artifactId>
-    <version>1.8c-SNAPSHOT</version>
+    <version>1.8c</version>
     <name>IronDoors</name>
     <description>Open iron doors and iron trap doors with your hand.</description>
 
